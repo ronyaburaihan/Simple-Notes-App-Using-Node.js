@@ -15,7 +15,7 @@ const addNote = (title,body) => {
             title: title,
             body: body
         })
-        
+
         saveNotes(notes)
         console.log(chalk.green('Note added successfully'))
     } else {
@@ -52,8 +52,17 @@ const removeNote = (title) => {
     saveNotes(notesToKeep)
 }
 
+const listNotes = () => {
+    const notes = loadNotes()
+
+    console.log(chalk.green.inverse('Your notes'))
+
+    notes.forEach( (note) => console.log(note.title))
+}
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
